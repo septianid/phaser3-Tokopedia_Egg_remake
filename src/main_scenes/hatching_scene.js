@@ -22,6 +22,8 @@ export class Hatching extends Phaser.Scene{
 
     }
 
+
+    //FUNCTION TO CREATE BUTTON
     createButton(x, y, width, height, radius, fillColor, strokeColor, text, textColor, event){
         let buttonContainer = this.add.container(x, y)
         let button = this.add.rexRoundRectangle(0, 0, width, height, radius, fillColor)
@@ -40,18 +42,24 @@ export class Hatching extends Phaser.Scene{
         return buttonContainer
     }
 
+
+    //FUNCTION TO CREATE SCREEN COVER
     createCover(alpha, color){
         let cover = this.add.rectangle(360, 640, 720, 1280, color).setAlpha(alpha)
 
         return cover
     }
 
+
+    //FUNCTION TO CREATE GAMEOBJECT (SHINE)
     createShine(size){
         let shine = this.add.sprite(360, 640, 'SHINE').setScale(size).setOrigin(0.5)
         
         return shine
     }
 
+
+    //FUNCTION TO CREATE FLOATING BOX BEFORE EGG CRACK
     createContainerFloatingBox(){
         let floatBoxContainer = this.add.container(360, 350)
 
@@ -68,6 +76,8 @@ export class Hatching extends Phaser.Scene{
         return floatBoxContainer
     }
 
+
+    //FUNCTION TO CREATE FINAL CONTAINER THAT CONTAIN AMOUNT OF TOKOPOINTS THAT USER GET
     createContainerDialogBox(){
         let dialogBoxContainer = this.add.container(360, 500)
 
@@ -96,6 +106,8 @@ export class Hatching extends Phaser.Scene{
         return dialogBoxContainer
     }
 
+
+    //FUNCTION TO CREATE EGG ANIMATION FROM CRACKING TO HATCHING
     animationEgg(){
         
         let shine = this.createShine(0.5)
@@ -135,6 +147,8 @@ export class Hatching extends Phaser.Scene{
         })
     }
 
+
+    //FUNCTION TO CREATE GAMEOBJECT FADING EFFECT
     tweenFading(object, to, duration){
         this.tweens.add({
             targets: object,
@@ -146,6 +160,8 @@ export class Hatching extends Phaser.Scene{
         })
     }
 
+
+    //FUNCTION TO CREATE COIN MOVING AND SCALING ANIMATION AT THE FIRST TIME BEFORE BEING CONTROLLED BY TIMELINE
     tweenCoin(){
         let coin = this.add.sprite(360, 620, 'COIN').setScale(1.3).setOrigin(0.5).setDepth(1)
         let container = this.createContainerDialogBox().setScale(0)
@@ -179,6 +195,8 @@ export class Hatching extends Phaser.Scene{
         })
     }
 
+
+    //FUNCTION TO CONTROL BUTTON TWEEN ORDER, WHICH ONE TO EXECUTE FIRST AND WHAT'S NEXT
     tweenButtonTimeline(button){
         this.tweens.timeline({
             tweens:[{
@@ -199,6 +217,8 @@ export class Hatching extends Phaser.Scene{
         })
     }
 
+
+    //FUNCTION TO CONTROL BUTTON AND CONTAINER TWEEN ORDER
     tweenUITimeline(panel, button1, button2){
         this.tweens.timeline({
             tweens:[{
@@ -235,6 +255,8 @@ export class Hatching extends Phaser.Scene{
         })
     }
 
+
+    //FUNCTION TO CONTROL COIN TWEEN ORDER
     tweenCoinTimeLine(price){
         this.tweens.timeline({
             tweens:[{
