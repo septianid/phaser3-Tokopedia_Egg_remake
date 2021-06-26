@@ -4,3 +4,4 @@
 - Art based on given asset and design
 - Using rex-plugin (https://github.com/rexrainbow/phaser3-rex-notes)
 - Add some impprovement like Loading Page
+- To run on localhost, use npm start
