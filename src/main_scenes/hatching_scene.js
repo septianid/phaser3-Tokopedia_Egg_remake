@@ -12,7 +12,7 @@ export class Hatching extends Phaser.Scene{
 
     create(){
         this.add.staticGameObject(360, 640, 'BACKGROUND_HATCHING').setScale(1.0).setOrigin(0.5)
-        this.add.staticGameObject(360, 1000, 'NEST').setScale(5.9).setOrigin(0.5)
+        this.add.staticGameObject(360, 1000, 'NEST').setScale(2.5).setOrigin(0.5)
         this.animationEgg()
 
         this.tweenFading(this.createCover(1, 0xFFFFFF), 0, 1500)

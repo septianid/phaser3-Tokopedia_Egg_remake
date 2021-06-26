@@ -17,8 +17,8 @@ export class Idle extends Phaser.Scene{
         this.add.staticGameObject(360, 640, 'BACKGROUND').setScale(1.35)
         this.add.staticGameObject(550, 400, 'WINDOW').setScale(1.0)
         this.add.staticGameObject(200, 410, 'BOARD').setScale(1.1)
-        this.add.staticGameObject(570, 640, 'LAMP').setScale(1.8)
-        this.add.staticGameObject(570, 850, 'NEST').setScale(1.8)
+        this.add.staticGameObject(570, 640, 'LAMP').setScale(1.0)
+        this.add.staticGameObject(570, 850, 'NEST').setScale(0.9)
         this.add.staticGameObject(120, 1170, 'LLEAF').setScale(1.8)
         this.add.staticGameObject(600, 1170, 'RLEAF').setScale(1.8)
         this.add.staticGameObject(570, 720, 'EGG').setScale(1.8)
@@ -88,7 +88,9 @@ export class Idle extends Phaser.Scene{
     idleStateButton(){
         let value = 100
         let button = this.add.rexRoundRectangle(360, 1130, 350, 120, 40, 0x1ACA79).setStrokeStyle(10, 0xFFFDFA);
-        let pipelineInstance = this.plugins.get('rexGlowFilterPipeline').add(button);
+        let buttonGlow = this.add.rexRoundRectangle(360, 1130, 350, 120, 40, 0xFFFFFF)
+        buttonGlow.setAlpha(0)
+        // let pipelineInstance = this.plugins.get('rexGlowFilterPipeline').add(button);
 
         let text = this.add.text(360, 1130, ''+value, {
             font: '52px FredokaOne',
@@ -96,11 +98,11 @@ export class Idle extends Phaser.Scene{
             align: 'center'
         }).setOrigin(0.5)
 
-        button.glowTask = this.tweens.add({
-            targets: pipelineInstance,
-            intensity: 0.005,
+        let glow = this.tweens.add({
+            targets: buttonGlow,
+            alpha: 0.4,
             ease: 'Linear',
-            duration: Phaser.Math.Between(600, 600),
+            duration: 1000,
             repeat: -1,
             yoyo: true
         });
@@ -117,9 +119,10 @@ export class Idle extends Phaser.Scene{
         button.setInteractive()
         button.on('pointerdown', () => {
             button.setFillStyle(0x107A49)
-            pipelineInstance = this.plugins.get('rexGlowFilterPipeline').remove(button);
-            button.glowTask.stop();
-            button.glowTask = null;
+            // pipelineInstance = this.plugins.get('rexGlowFilterPipeline').remove(button);
+            // button.glowTask.stop();
+            // button.glowTask = null;
+            glow.stop()
             let timerCount = 0
 
             let timer = this.time.addEvent({

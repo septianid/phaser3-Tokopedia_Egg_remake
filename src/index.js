@@ -1,13 +1,12 @@
 import Phaser from 'phaser';
 import CircularProgressPlugin from 'phaser3-rex-plugins/plugins/circularprogress-plugin.js';
 import RoundRectanglePlugin from 'phaser3-rex-plugins/plugins/roundrectangle-plugin.js';
-import GlowFilterPipelinePlugin from 'phaser3-rex-plugins/plugins/glowfilterpipeline-plugin.js';
 import { Loading } from './main_scenes/loading.js';
 import { Idle } from './main_scenes/idle_scene.js';
 import { Hatching } from './main_scenes/hatching_scene.js'
 
 const config = {
-    type: Phaser.AUTO,
+    type: Phaser.CANVAS,
     parent: "game-page",
     backgroundColor: 0x75D5E3,
     dom: {
@@ -24,10 +23,6 @@ const config = {
       },{
           key: 'rexRoundRectanglePlugin',
           plugin: RoundRectanglePlugin,
-          start: true
-      },{
-          key: 'rexGlowFilterPipeline',
-          plugin: GlowFilterPipelinePlugin,
           start: true
       }]
     },

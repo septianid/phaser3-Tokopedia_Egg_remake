@@ -63,7 +63,7 @@ export class Loading extends Phaser.Scene{
             centerColor: undefined,
             value: 0
         })
-        this.add.staticGameObject(360, 1100, 'NEST').setScale(5.0).setOrigin(0.5)
+        this.add.staticGameObject(360, 1100, 'NEST').setScale(2.5).setOrigin(0.5)
 
         this.load.on('progress', function (value) {
 
